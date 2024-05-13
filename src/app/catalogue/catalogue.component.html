@@ -1,0 +1,39 @@
+<div class="container text-center">
+    <form (submit)="save($event)" class="row align-items-start">
+        <div class="col-2">
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="product.type" name="type">
+                <option (click)="selectType('aceite')">Aceite</option>
+                <option (click)="selectType('filtro')">Filtro</option>
+                <option (click)="selectType('aditivo')">Aditivo</option>
+              </select>
+        </div>
+        <input class="input-group-text col-3" type="text" [(ngModel)]="product.brand" name="brand" placeholder="Marca" required>
+        <input class="input-group-text col-3" type="text" [(ngModel)]="product.price" name="price" placeholder="price" required>
+        <input class="input-group-text col-3" type="text" [(ngModel)]="product.stock" name="stock" placeholder="Stock" required>
+        <button class="btn btn-dark col-1" type="submit">Guardar</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tipo</th>
+            <th>Marca</th>
+            <th>Precio</th>
+            <th>stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+        <td>{{ product.id}}</td>
+        <td>{{ product.type}}</td>
+        <td>{{ product.brand}}</td>
+        <td>{{ product.price | currency}}</td>
+        <td>{{ product.stock}}  <span class="badge text-bg-warning" *ngIf="product.stock == 0">SIN STOCK</span></td>
+        <td>
+            <button class="btn btn-outline-primary" (click)="updateProduct(product)">Editar</button>
+            <button class="btn btn-outline-danger" (click)="delete(product)">Eliminar</button>
+        </td>
+    </tbody>
+</table>
