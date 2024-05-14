@@ -24,13 +24,13 @@ export class CatalogueComponent {
   };
 
   async getProducts() {
-    const response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product`);
+    let response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product`);
     this.products = await response.json();
     console.log(this.products);
   }
 
   async delete(product: Product) {
-    const response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product/${product.id}`, {
+    let response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product/${product.id}`, {
       method: 'DELETE'
     });
     this.products = this.products.filter(p => p.id !== product.id);
@@ -39,7 +39,7 @@ export class CatalogueComponent {
 
   async save(event: Event) {
     event.preventDefault();
-    const response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product`, {
+    let response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,26 +47,25 @@ export class CatalogueComponent {
       body: JSON.stringify(this.product)
     });
     this.products.push(this.product);
-    const savedProduct = await response.json();
+    let savedProduct = await response.json();
     console.log(savedProduct);
   }
 
-
-  async getProduct(id: number) {
-    const response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/producs/${id}`);
-    const product = await response.json();
+  async getProductBy(id: number) {
+    let response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product/${id}`);
+    let product = await response.json();
     console.log(product);
   }
 
-  async updateProduct(product: Product) {
-    const response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product/${product.id}`, {
+  async updateProduct(id?:number) {
+    let response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(product)
+      body: JSON.stringify(this.product)
     });
-    const updatedProduct = await response.json();
+    let updatedProduct = await response.json();
     console.log(updatedProduct);
   }
 
