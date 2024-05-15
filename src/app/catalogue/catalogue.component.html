@@ -1,49 +1,63 @@
 <div class="container text-center">
-    <form (submit)="save($event)" class="row align-items-start">
-        <div class="col-2">
+    <form (submit)="save($event)" class="form-control">
+        <div class="form-floating mb-3">
             <select class="form-select" aria-label="Default select example" [(ngModel)]="product.type" name="type">
                 <option (click)="selectType('aceite')">Aceite</option>
                 <option (click)="selectType('filtro')">Filtro</option>
                 <option (click)="selectType('aditivo')">Aditivo</option>
               </select>
+              <label for="floatingInput">Tipo</label>
         </div>
-        <input class="input-group-text col-2" type="text" [(ngModel)]="product.brand" name="brand" placeholder="Marca" required>
-        <input class="input-group-text col-2" type="text" [(ngModel)]="product.price" name="price" placeholder="price" required>
-        <input class="input-group-text col-2" type="text" [(ngModel)]="product.stock" name="stock" placeholder="Stock" required>
-        <button class="btn btn-dark col-1" type="submit">Guardar</button>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" [(ngModel)]="product.brand" name="brand" placeholder="Marca">
+            <label for="floatingInput">Marca</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" [(ngModel)]="product.purchasePrice" name="price" placeholder="price">
+            <label for="floatingInput">Precio x Mayor</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" [(ngModel)]="product.profit" name="stock" placeholder="Stock" >
+            <label for="floatingInput">porcentaje agregado</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" [(ngModel)]="product.stock" name="stock" placeholder="Stock" >
+            <label for="floatingInput">Stock</label>
+        </div>
+        <button class="btn btn-dark col-1" type="submit">Agregar</button>
     </form>
 </div>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Tipo</th>
-            <th>Marca</th>
-            <th>Precio</th>
-            <th>stock</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for(product of products; track product.id) {
+<div class="container col-12">
+    <table class="table">
+        <thead>
             <tr>
-                <td>{{ product.type}}</td>
-                <td>{{ product.brand}}</td>
-                <td>{{ product.price | currency}}</td>
-                @if(product.stock == 0) {
-                    <td>{{ product.stock}}  <span class="badge text-bg-warning">SIN STOCK</span></td>
-                }@else {
-                    <td>{{ product.stock}}</td>
-                }
-                <td>
-                    <button class="btn btn-outline-primary" (click)="updateProduct(product.id)">Editar</button>
-                    <button class="btn btn-outline-danger" (click)="delete(product)">Eliminar</button>
-                </td>
+                <th>Tipo</th>
+                <th>Marca</th>
+                <th>Precio</th>
+                <th>stock</th>
             </tr>
-        }@empty {
-            <tr>
-                <td colspan="5">No hay productos</td>
-            </tr>
-        }
-       
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @for(product of products; track product.id) {
+                <tr>
+                    <td>{{ product.type}}</td>
+                    <td>{{ product.brand}}</td>
+                    <td>{{ product.salePrice | currency}}</td>
+                    @if(product.stock == 0) {
+                        <td>{{ product.stock}}  <span class="badge text-bg-warning">SIN STOCK</span></td>
+                    }@else {
+                        <td>{{ product.stock}}</td>
+                    }
+                    <td>
+                        <button class="btn btn-outline-primary m-1" (click)="updateProduct(product.id)">Editar</button>
+                        <button class="btn btn-outline-danger m-1" (click)="delete(product)">Eliminar</button>
+                    </td>
+                </tr>
+            }@empty {
+                <tr>
+                    <td colspan="5">No hay productos</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

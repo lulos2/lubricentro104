@@ -18,9 +18,13 @@ export class CatalogueComponent {
 
   product: Product = {
     type: "indefinido",
-    brand: null,
-    price: null,
-    stock: null
+    brand: "indefinido",
+    code: "indefinido",
+    name: "indefinido",
+    purchasePrice: 0,
+    salePrice:0,
+    profit: 66,
+    stock: 0,
   };
 
   async getProducts() {
@@ -39,6 +43,7 @@ export class CatalogueComponent {
 
   async save(event: Event) {
     event.preventDefault();
+    this.product.salePrice = this.getSalePrice();
     let response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product`, {
       method: 'POST',
       headers: {
@@ -46,8 +51,8 @@ export class CatalogueComponent {
       },
       body: JSON.stringify(this.product)
     });
-    this.products.push(this.product);
     let savedProduct = await response.json();
+    this.products.push(savedProduct);
     console.log(savedProduct);
   }
 
@@ -67,6 +72,10 @@ export class CatalogueComponent {
     });
     let updatedProduct = await response.json();
     console.log(updatedProduct);
+  }
+
+  getSalePrice(): number {
+    return (this.product.purchasePrice * (1+this.product.profit / 100));
   }
 
   selectType(type: string) {

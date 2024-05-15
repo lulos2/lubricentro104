@@ -2,11 +2,14 @@ import { get } from 'http';
 
 export interface Product {
   id?: number;
-  type?: string;
-  brand: null;
-  price: null;
-  stock: null;
-
+  type: string;
+  code: string;
+  brand: string;
+  name: string;
+  stock: number;
+  purchasePrice: number;
+  salePrice: number;
+  profit: number;
 }
 
 /* class Oil extends Product {
