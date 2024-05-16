@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container text-center col-12 ">
     <form (submit)="save($event)" class="form-control">
         <div class="form-floating mb-3">
             <select class="form-select" aria-label="Default select example" [(ngModel)]="product.type" name="type">
@@ -28,10 +28,10 @@
             <input type="text" class="form-control" id="floatingInput" [(ngModel)]="product.stock" name="stock" placeholder="Stock" >
             <label for="floatingInput">Stock</label>
         </div>
-        <button class="btn btn-dark col-1" type="submit">Agregar</button>
+        <button class="btn btn-success col-1" type="submit">Agregar</button>
     </form>
 </div>
-<div class="container text-center col-12"> 
+<div class="container col-12 border border-primary rounded"> 
     <div class="row justify-content-end">
         <div class="dropdown col-2">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,6 +52,7 @@
             <tr>
                 <th>Tipo</th>
                 <th>Marca</th>
+                <th>Nombre</th>
                 <th>Precio</th>
                 <th>stock</th>
             </tr>
@@ -69,7 +70,7 @@
                         <td>{{ product.stock}}</td>
                     }
                     <td>
-                        <button class="btn btn-outline-primary meqq-1" (click)="updateProduct(product.id)">Editar</button>
+                        <button class="btn btn-outline-primary me-1" (click)="updateProduct(product.id)">Editar</button>
                         <button class="btn btn-outline-danger ms-1" (click)="delete(product)">Eliminar</button>
                     </td>
                 </tr>
