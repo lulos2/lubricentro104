@@ -33,7 +33,7 @@ export class CatalogueComponent {
     console.log(this.products);
   }
 
-  async delete(product: Product) {
+  async delete(product :Product) {
     let response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product/${product.id}`, {
       method: 'DELETE'
     });
@@ -41,7 +41,7 @@ export class CatalogueComponent {
     console.log(response);
   }
 
-  async save(event: Event) {
+  async save(event :Event) {
     event.preventDefault();
     this.product.salePrice = this.getSalePrice();
     let response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product`, {
@@ -56,13 +56,13 @@ export class CatalogueComponent {
     console.log(savedProduct);
   }
 
-  async getProductBy(id: number) {
+  async getProductBy(id :number) {
     let response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product/${id}`);
     let product = await response.json();
     console.log(product);
   }
 
-  async updateProduct(id?:number) {
+  async updateProduct(id? :number) {
     let response = await fetch(`https://66422c253d66a67b343683a2.mockapi.io/api/get/product/${id}`, {
       method: 'PUT',
       headers: {
@@ -82,4 +82,33 @@ export class CatalogueComponent {
     this.product.type = type;
   }
 
+
+  orederByPrice(): void {
+    this.products = this.products.sort((a, b) => a.salePrice - b.salePrice);
+    console.log(this.products);
+  }
+
+  orderByStock(): void {
+    this.products = this.products.sort((a, b) => a.stock - b.stock);
+  }
+
+  orderByType(): void {
+    this.products = this.products.sort((a, b) => a.type.localeCompare(b.type));
+  }
+
+  orderByBrand(): void {
+    this.products = this.products.sort((a, b) => a.brand.localeCompare(b.brand));
+  }
+
+  orderByCode(): void {
+    this.products = this.products.sort((a, b) => a.code.localeCompare(b.code));
+  }
+
+  orderByName(): void {
+    this.products = this.products.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  searchByCode(code: string): void {
+    this.products = this.products.filter(p => p.code.includes(code));
+  }
 }
