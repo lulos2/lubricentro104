@@ -17,6 +17,7 @@ export class CatalogueComponent {
   }
 
   product: Product = {
+    image: "../../assets/images/logo.jpg",
     type: "indefinido",
     brand: "indefinido",
     code: "indefinido",

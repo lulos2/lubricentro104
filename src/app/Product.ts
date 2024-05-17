@@ -2,6 +2,7 @@ import { get } from 'http';
 
 export interface Product {
   id?: number;
+  image?: string;
   type: string;
   code: string;
   brand: string;

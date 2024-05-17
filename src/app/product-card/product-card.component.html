@@ -1,9 +1,12 @@
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{productCard.brand}}</h5>
-      <p class="card-text">{{productCard.name}}</p>
-      <p class="card-text">{{productCard.salePrice}}</p>
-      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-    </div>
+
+<div class="col">
+  <div class="card m-4" style="width: 18rem;">
+      <img [src]="productCard.image" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">{{productCard.brand}}</h4>
+        <p class="card-text">{{productCard.name}}</p>
+        <p class="card-text">{{productCard.salePrice | currency}}</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      </div>
+  </div>
 </div>

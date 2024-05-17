@@ -1,4 +1,4 @@
-<div class="card-list">
+<div class="row row-cols-3 row-cols-md-4 g-4">
     @for(product of products; track product.id) {
         <app-product-card [productCard]="product"></app-product-card>
     }
