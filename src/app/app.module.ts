@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LubriCardListComponent } from './lubri-card-list/lubri-card-list.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductLoaderComponent } from './product-loader/product-loader.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
     CatalogueComponent,
     LubriCardListComponent,
     ProductCardComponent,
+    ProductLoaderComponent,
   ],
   imports: [
     BrowserModule,

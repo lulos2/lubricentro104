@@ -11,37 +11,20 @@ import { ProductsService } from '../products.service';
 export class CatalogueComponent {
 
   products: Product[] = [];
+  product!: Product;
+
 
   constructor(private productService: ProductsService) {
     productService.products.subscribe(p => this.products = p);
   }
 
-  product: Product = {
-    image: "../../assets/images/logo.jpg",
-    type: "indefinido",
-    brand: "indefinido",
-    code: "indefinido",
-    name: "indefinido",
-    purchasePrice: 0,
-    salePrice:0,
-    profit: 66,
-    stock: 0,
-  };
-
-  save(): void {
-    this.productService.save(this.product);
-  }
-
+  
   update(): void {
     this.productService.updateProduct(this.product.id, this.product);
   }
 
   delete(product: Product): void {
     this.productService.delete(product);
-  }
-
-  selectType(type: string) {
-    this.product.type = type;
   }
 
   orederByPrice(): void {
