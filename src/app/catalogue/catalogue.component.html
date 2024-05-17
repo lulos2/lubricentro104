@@ -1,5 +1,5 @@
 <div class="container text-center col-12 ">
-    <form (submit)="save($event)" class="form-control">
+    <form (submit)="save()" class="form-control">
         <div class="form-floating mb-3">
             <select class="form-select" aria-label="Default select example" [(ngModel)]="product.type" name="type">
                 <option (click)="selectType('aceite')">Aceite</option>
@@ -70,7 +70,7 @@
                         <td>{{ product.stock}}</td>
                     }
                     <td>
-                        <button class="btn btn-outline-primary me-1" (click)="updateProduct(product.id)">Editar</button>
+                        <button class="btn btn-outline-primary me-1" (click)="update()">Editar</button>
                         <button class="btn btn-outline-danger ms-1" (click)="delete(product)">Eliminar</button>
                     </td>
                 </tr>
