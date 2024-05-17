@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from '../Product';
-import { CatalogueComponent } from '../catalogue/CatalogueComponent';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-lubri-card-list',
@@ -11,7 +11,8 @@ export class LubriCardListComponent {
 
   products :Product[] = [];
   
-  constructor() {
+  constructor(private productsService: ProductsService) {
+    productsService.products.subscribe(p => this.products = p);
     
   }
 
