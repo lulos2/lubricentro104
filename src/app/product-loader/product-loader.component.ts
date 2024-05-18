@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Product } from '../Product';
+import { time } from 'console';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-product-loader',
@@ -21,13 +23,15 @@ export class ProductLoaderComponent {
     stock: 0,
   };
 
+  status: number = 0;
 
   constructor(private productsService: ProductsService) {
 
   }
 
   save(): void {
-    this.productsService.save(this.product);
+    this.productsService.save(this.product).then((status) => {this.status = status;});
+    setTimeout(() => { this.status = 0; }, 3000);
   }
 
   selectType(type: string): void {

@@ -29,5 +29,10 @@
             <label for="floatingInput">Stock</label>
         </div>
         <button class="btn btn-success col-1" type="submit">Agregar</button>
+        @if(this.status == 201 ) {
+            <div class="alert alert-success" role="alert">
+                se agrego correctamente
+            </div>
+        }
     </form>
 </div>
