@@ -10,7 +10,7 @@ import { ProductsService } from '../products.service';
 
 export class CatalogueComponent {
 
-  products: Product[] = [];
+  products!: Product[];
   product!: Product;
 
 
@@ -29,7 +29,6 @@ export class CatalogueComponent {
 
   orederByPrice(): void {
     this.products = this.products.sort((a, b) => a.salePrice - b.salePrice);
-    console.log(this.products);
   }
 
   orderByStock(): void {
