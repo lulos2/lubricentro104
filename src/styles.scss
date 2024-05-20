@@ -2,3 +2,31 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    --primaryColorLight2: #6716D2;
+    --primaryColorLight1: #5B09C7;
+    --primaryColor: #4907A1;
+    --primaryColorDark1: #3E0589;
+    --primaryColorDark2: #330472;
+    --secondaryColorLight2: rgba(255, 255, 255, 0.20);
+    --secondaryColorLight1: #767279;
+    --secondaryColor: #3F3C3C;
+    --secondaryColorDark1: #252525;
+    --secondaryColorDark2: #252525;
+    --black:#100B16;
+    --white:#F8F3FF;
+    --highLight:#FFC300;
+    --success:#04AA6D;
+    --error:#FF2020;
+    --warning:#FFE141;
+  
+    --familyFontNunito:'Nunito Sans', sans-serif;
+  
+  }
+
+  body {
+    font-family: var(--familyFontNunito);
+    background-color: var(--white);
+    color: var(--black);
+  }
