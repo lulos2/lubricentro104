@@ -7,7 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductsService {
 
-  private url = 'https://66422c253d66a67b343683a2.mockapi.io/api/get/product'
+  private url = 'https://66422c253d66a67b343683a2.mockapi.io/api/get/product';
+  private lubeManagerAPI = 'http://localhost:8080';
   private _products :Product[] = [];
   products: BehaviorSubject<Product[]> = new BehaviorSubject(this._products);
 

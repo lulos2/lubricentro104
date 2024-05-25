@@ -12,7 +12,7 @@ import { timeout } from 'rxjs';
 export class ProductLoaderComponent {
 
   product: Product = {
-    image: "../../assets/images/logo.jpg",
+    image: "../../assets/images/logo.png",
     type: "indefinido",
     brand: "indefinido",
     code: "indefinido",
@@ -31,7 +31,7 @@ export class ProductLoaderComponent {
 
   save(): void {
     this.productsService.save(this.product).then((status) => {this.status = status;});
-    setTimeout(() => { this.status = 0; }, 3000);
+    setTimeout(() => { this.status = 0; }, 1000);
   }
 
   selectType(type: string): void {
