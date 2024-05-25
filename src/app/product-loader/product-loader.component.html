@@ -2,9 +2,10 @@
     <form (submit)="save()" class="form-control">
         <div class="form-floating mb-3">
             <select class="form-select" aria-label="Default select example" [(ngModel)]="product.type" name="type">
-                <option (click)="selectType('aceite')">Aceite</option>
-                <option (click)="selectType('filtro')">Filtro</option>
-                <option (click)="selectType('aditivo')">Aditivo</option>
+                <option (click)="selectType('Aceite')">Aceite</option>
+                <option (click)="selectType('Filtro')">Filtro</option>
+                <option (click)="selectType('Aditivo')">Aditivo</option>
+                <option (click)="selectType('Refrigerante')">Refrigerante</option>
               </select>
               <label for="floatingInput">Tipo</label>
         </div>

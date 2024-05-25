@@ -18,8 +18,11 @@ const routes: Routes = [
     component: LubriCardListComponent
   },
   {
-    path: 'admin',
+    path: 'loadProduct',
     component: ProductLoaderComponent
+  },
+  {
+    path: 'products/:type', component: LubriCardListComponent
   },
 ];
 

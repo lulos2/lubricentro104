@@ -11,11 +11,19 @@
             <a class="nav-link active" aria-current="page" [routerLink]="['/catalogo']">Catalogo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/admin']">admin</a>
+            <a class="nav-link" [routerLink]="['/loadProduct']">Cargar Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            <a class="nav-link" [routerLink]="['/products', 'Aceite']">Aceites</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/products', 'Filtro']">Filtros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/products', 'Aditivo']">Aditivos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/products', 'Refrigerante']">Refrigerantes</a>          </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -29,11 +37,9 @@
   <router-outlet></router-outlet>
 </main>
 <footer>
-  <div class="p-3 m-2">
       <div class="row">
           <div class="col-12">
               <h2 class="text-center">Lubricentro 104 - 2024</h2>
           </div>
       </div>
-  </div>
 </footer>
