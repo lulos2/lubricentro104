@@ -9,6 +9,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { LubriCardListComponent } from './lubri-card-list/lubri-card-list.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductLoaderComponent } from './product-loader/product-loader.component';
+import { LubriSearchComponent } from './lubri-search/lubri-search.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ProductLoaderComponent } from './product-loader/product-loader.componen
     LubriCardListComponent,
     ProductCardComponent,
     ProductLoaderComponent,
+    LubriSearchComponent,
   ],
   imports: [
     BrowserModule,

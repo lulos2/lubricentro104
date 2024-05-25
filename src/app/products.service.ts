@@ -72,4 +72,8 @@ export class ProductsService {
   getSalePrice(product: Product): number {
     return (product.purchasePrice * (1+product.profit / 100));
   }
+
+  async searchProducts(query: string): Promise<Product[]>{
+    return fetch(this.url + `?search=${query}`).then(response => response.json());
+  }
 }
