@@ -9,4 +9,11 @@ import { Product } from '../Product';
 })
 export class LubriSearchComponent {
   
+  query: string = ""; 
+  constructor(private productsService: ProductsService) {
+  }
+
+  search() {
+    this.productsService.searchProducts(this.query);
+  }
 }

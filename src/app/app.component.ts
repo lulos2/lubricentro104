@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lubricentro104';
+  categories = ['Aceite', 'Filtro', 'Aditivo', 'Refrigerante'];
 }
