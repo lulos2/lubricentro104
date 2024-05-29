@@ -14,6 +14,6 @@ export class LubriSearchComponent {
   }
 
   search() {
-    this.productsService.searchProducts(this.query);
+    this.productsService.searchProduct(this.query);
   }
 }

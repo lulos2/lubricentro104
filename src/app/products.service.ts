@@ -48,7 +48,7 @@ export class ProductsService {
       this.products.next(this._products);
       return response.status;
     } catch (error) {
-      console.error('There was a problem with the save operattion', error);
+      console.error(error);
       throw error;
     }
   }
@@ -73,7 +73,15 @@ export class ProductsService {
     return (product.purchasePrice * (1+product.profit / 100));
   }
 
-  async searchProducts(query: string): Promise<Product[]>{
-    return fetch(this.url + `?search=${query}`).then(response => response.json());
+  searchProduct(term: string) {
+    let products = this._products.filter(p =>
+      p.name.toLowerCase().includes(term.toLowerCase()) ||
+      p.type.toLowerCase().includes(term.toLowerCase()) ||
+      p.brand.toLowerCase().includes(term.toLowerCase()) ||
+      p.code.toLowerCase().includes(term.toLowerCase()) ||
+      p.salePrice.toString().includes(term) ||
+      p.stock.toString().includes(term)
+    );
+    this.products.next(products);
   }
 }
