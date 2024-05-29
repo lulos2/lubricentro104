@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Product } from '../Product';
-import { time } from 'console';
-import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-product-loader',
@@ -30,6 +28,7 @@ export class ProductLoaderComponent {
   }
 
   save(): void {
+    this.product.image = this.imageType(this.product.type);
     this.productsService.save(this.product).then((status) => {this.status = status;});
     setTimeout(() => { this.status = 0; }, 1000);
   }
@@ -37,4 +36,10 @@ export class ProductLoaderComponent {
   selectType(type: string): void {
     this.product.type = type;
   }
+
+  imageType(type: string): string {
+    if(type == "indefinido") return "../../assets/images/logo.png";
+    return "../../assets/images/" + type.toLocaleLowerCase() + ".jpg";
+  }
+
 }
