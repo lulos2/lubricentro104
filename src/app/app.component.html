@@ -6,19 +6,22 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto">
-          <li>
-            <a class="nav-link" [routerLink]="['/catalogo']">catalogo</a>
+        <ul class="navbar-nav me-auto col-1">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle col-1" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Categorias</a>
+            <ul class="dropdown-menu">
+              @for (category of categories; track $index) {
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/products', category]">{{ category }}</a>
+                </li>
+              }
+            </ul>
           </li>
-          @for (category of categories; track $index) {
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/products', category]">{{ category }}</a>
-            </li>
-          }
-          <a class="nav-link" [routerLink]="['/loadProduct']">cargar</a>
         </ul>
+        <app-lubri-search></app-lubri-search>
+        <a class="nav-link col-1" [routerLink]="['/catalogo']">catalogo</a>
+        <a class="nav-link col-1" [routerLink]="['/loadProduct']">cargar</a>
       </div>
-      <app-lubri-search></app-lubri-search>
     </div>
   </nav>
 </header>
