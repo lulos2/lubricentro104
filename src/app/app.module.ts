@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { LubriCardListComponent } from './lubri-card-list/lubri-card-list.compon
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductLoaderComponent } from './product-loader/product-loader.component';
 import { LubriSearchComponent } from './lubri-search/lubri-search.component';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { LubriSearchComponent } from './lubri-search/lubri-search.component';
     ProductCardComponent,
     ProductLoaderComponent,
     LubriSearchComponent,
+    InputIntegerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [
     provideClientHydration(),

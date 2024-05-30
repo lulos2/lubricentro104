@@ -11,6 +11,7 @@ export interface Product {
   purchasePrice: number;
   salePrice: number;
   profit: number;
+  quantity: number;
 }
 
 /* class Oil extends Product {

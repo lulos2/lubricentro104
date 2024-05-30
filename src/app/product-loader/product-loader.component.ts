@@ -19,6 +19,7 @@ export class ProductLoaderComponent {
     salePrice:0,
     profit: 66,
     stock: 0,
+    quantity: 0
   };
 
   status: number = 0;

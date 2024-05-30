@@ -36,7 +36,11 @@
                         <td>{{ product.stock}}</td>
                     }
                     <td>
-                        <button class="btn btn-outline-primary me-1" (click)="update()">Editar</button>
+                        @if(product.stock){
+                            <app-input-integer [(quantity)]="product.quantity" [max]="product.stock"></app-input-integer>
+                        }
+                    </td>
+                    <td>
                         <button class="btn btn-outline-danger ms-1" (click)="delete(product)">Eliminar</button>
                     </td>
                 </tr>

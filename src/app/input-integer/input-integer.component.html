@@ -1,0 +1,5 @@
+<div class="form-group">
+    <button type="button" class="btn btn-default btn-xs" (click)="downQuantity()">-</button>            
+    <input class="smallInput" type="number"  [(ngModel)]="quantity" (ngModelChange)="verifyProductQuantity()"/>
+    <button type="button" class="btn btn-default btn-xs" (click)="upQuantity()">+</button>
+</div>
