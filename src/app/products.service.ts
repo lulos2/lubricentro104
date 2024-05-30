@@ -1,39 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Product } from './Product';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+const URL = 'https://66422c253d66a67b343683a2.mockapi.io/api/get/product';
+//const lubeManagerAPI = 'http://localhost:8080';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  private url = 'https://66422c253d66a67b343683a2.mockapi.io/api/get/product';
-  private lubeManagerAPI = 'http://localhost:8080';
   private _products :Product[] = [];
   products: BehaviorSubject<Product[]> = new BehaviorSubject(this._products);
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.getProducts();
   }
 
-  async getProducts() {
-    let response = await fetch(this.url);
-    this._products = await response.json();
-    this.products.next(this._products);
+  getProducts() {
+      this.http.get<Product[]>(URL).subscribe(products => {
+      this._products = products;
+      this.products.next(this._products);
+    });
   }
 
-  async delete(product :Product) {
-    let response = await fetch(this.url + `/${product.id}`, {
-      method: 'DELETE'
+  delete(product: Product) {
+      return this.http.delete(URL + `/${product.id}`).subscribe(() => {
+      this._products = this._products.filter(p => p.id !== product.id);
+      this.products.next(this._products);
     });
-    this._products = this._products.filter(p => p.id !== product.id);
-    this.products.next(this._products);
   }
 
   async save(product: Product): Promise<number> {
     try {
       let productCopy = { ...product, salePrice: this.getSalePrice(product) };
-      let response = await fetch(this.url, {
+      let response = await fetch(URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -54,19 +56,8 @@ export class ProductsService {
   }
 
   async getProductBy(id :number) {
-    let response = await fetch(this.url+`/${id}`);
+    let response = await fetch(URL+`/${id}`);
     let product = await response.json();
-  }
-
-  async updateProduct(id? :number, product? :Product) {
-    let response = await fetch(this.url+`/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(product)
-    });
-    let updatedProduct = await response.json();
   }
 
   getSalePrice(product: Product): number {

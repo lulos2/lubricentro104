@@ -18,11 +18,6 @@ export class CatalogueComponent {
     productService.products.subscribe(p => this.products = p);
   }
 
-  
-  update(): void {
-    this.productService.updateProduct(this.product.id, this.product);
-  }
-
   delete(product: Product): void {
     this.productService.delete(product);
   }
