@@ -32,27 +32,11 @@ export class ProductsService {
     });
   }
 
-  async save(product: Product): Promise<number> {
-    try {
-      let productCopy = { ...product, salePrice: this.getSalePrice(product) };
-      let response = await fetch(URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(productCopy)
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      let savedProduct = await response.json();
-      this._products.push(savedProduct);
-      this.products.next(this._products);
-      return response.status;
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
+  save(product: Product): Observable<Product> {
+    let productCopy = { ...product, salePrice: this.getSalePrice(product) };
+    this._products.push(productCopy);
+    this.products.next(this._products);
+    return this.http.post<Product>(URL, productCopy);   
   }
 
   async getProductBy(id :number) {

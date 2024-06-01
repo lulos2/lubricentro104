@@ -22,7 +22,7 @@ export class ProductLoaderComponent {
     quantity: 0
   };
 
-  status: number = 0;
+  productSaved: boolean = false;
 
   constructor(private productsService: ProductsService) {
 
@@ -30,8 +30,10 @@ export class ProductLoaderComponent {
 
   save(): void {
     this.product.image = this.imageType(this.product.type);
-    this.productsService.save(this.product).then((status) => {this.status = status;});
-    setTimeout(() => { this.status = 0; }, 1000);
+    this.productsService.save(this.product).pipe().subscribe(() => {
+      this.productSaved = true;
+      setTimeout(() => this.productSaved = false, 1500);
+    });
   }
 
   selectType(type: string): void {
