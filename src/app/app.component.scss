@@ -4,9 +4,9 @@ body {
 }
 
 router-oultet {
-    height: calc(100vh - 80px); 
+    height: calc(100vh - 468px); 
     width: 100%;
-    background-color: black;
+    background-color: var(--black);
     padding-bottom: 120px;
 }
 
@@ -19,6 +19,7 @@ header {
 }
 
 main {
+  min-height: calc(100vh - 468px);
   width: 100%;
   background-color: var(--white);
 }
@@ -36,8 +37,8 @@ footer{
   width: 100%;
   justify-content: center;
   align-items: center;
-  }
+}
 
-  app-lubri-search {
+app-lubri-search {
     margin-right: 25vw;
 }
