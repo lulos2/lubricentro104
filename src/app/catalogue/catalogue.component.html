@@ -21,6 +21,9 @@
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>stock</th>
+                <th>cantidad</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -35,11 +38,16 @@
                     }@else {
                         <td>{{ product.stock}}</td>
                     }
-                    <td>
-                        @if(product.stock){
+                    @if(product.stock){
+                        <td>
                             <app-input-integer [(quantity)]="product.quantity" [max]="product.stock"></app-input-integer>
-                        }
-                    </td>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-success" (click)="updateStock(product, product.quantity)">descontar</button>
+                        </td>
+                    }@else {
+                        <td></td>
+                        <td></td>}
                     <td>
                         <button class="btn btn-outline-danger ms-1" (click)="delete(product)">Eliminar</button>
                     </td>

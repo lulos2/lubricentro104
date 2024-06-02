@@ -34,8 +34,7 @@ export class InputIntegerComponent {
   verifyProductQuantity(): void {
     if(this.quantity > this.max) {
       alert("No hay suficientes cervezas en stock");
-      this.quantity = 0;
-
+      this.quantity = this.max;
     }
     if(this.quantity < 0) {
       alert("No se pueden encargar cervezas negativas ");

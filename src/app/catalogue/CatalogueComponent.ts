@@ -49,4 +49,8 @@ export class CatalogueComponent {
   searchByCode(code: string): void {
     this.products = this.products.filter(p => p.code.includes(code));
   }
+
+  updateStock(product: Product, quantity: number): void {
+    this.productService.updateStock(product, quantity);
+  }
 }

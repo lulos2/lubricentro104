@@ -48,7 +48,7 @@ export class ProductsService {
     return (product.purchasePrice * (1+product.profit / 100));
   }
 
-  searchProduct(term: string) {
+  searchProduct(term: string): void {
     let products = this._products.filter(p =>
       p.name.toLowerCase().includes(term.toLowerCase()) ||
       p.type.toLowerCase().includes(term.toLowerCase()) ||
@@ -58,5 +58,13 @@ export class ProductsService {
       p.stock.toString().includes(term)
     );
     this.products.next(products);
+  }
+
+  updateStock(product: Product, quantity: number): void {
+    if(product.stock < quantity) return alert('No hay suficiente stock');
+    let index = this._products.findIndex(p => p.id === product.id);
+    this._products[index].stock = product.stock - quantity;
+    this.http.put(URL + `/${product.id}`, this._products[index]).subscribe(() => {});
+    this.products.next(this._products);
   }
 }
