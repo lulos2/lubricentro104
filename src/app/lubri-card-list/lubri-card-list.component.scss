@@ -1,4 +1,9 @@
 .row {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 80px;
+    margin-right: 80px;
+    justify-content: center;
+}
+
+app-product-card {
+    width: fit-content;
 }
